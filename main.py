@@ -24,12 +24,13 @@ net.print_accuracy(training_images, testing_labels)
 
 # print prediction
 
-def unison_shuffled_copies(a, b):
-    assert len(a) == len(b)
-    p = np.random.permutation(len(a))
-    return a[p], b[p]
+def unison_shuffled_copies(aye, buh):
+    assert len(aye) == len(buh)
+    p = np.random.permutation(len(aye))
+    return np.array(aye)[p], np.array(buh)[p]
+
 
 
 for x in range(0, 1):
     a, b = unison_shuffled_copies(training_images, training_labels)
-    net.update(500, a, b)
+    net.update(500, 1, a, b)
