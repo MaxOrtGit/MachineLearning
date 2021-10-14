@@ -21,11 +21,13 @@ class NeuralNetwork:
     def update(self, step_size, images, labels):
         print(step_size)
         print(len(images))
+        print(labels[0])
         # print(images[1])
         for batchNumber in range(0, int(np.ceil(len(images) / step_size))):
-            leRange = range(batchNumber * step_size,
+            leRange = range(batchNumber * step_size -1,
                             ((batchNumber + 1) * step_size) if ((batchNumber + 1) * step_size < len(images)) else (
                                     len(images) - 1))
+            print(leRange)
             images_in_set = images[leRange]
             labels_in_set = labels[leRange]
             predictions = self.predict(images_in_set)
@@ -34,16 +36,12 @@ class NeuralNetwork:
             average = [np.average(k) for k in costs_for_math]
             set_average = np.average(average)
 
-            if batchNumber == 1 & False:
-                print()
-                costs_for_math = self.get_cost(predictions, labels_in_set)
-                print(costs_for_math)
-                average = [np.average(k) for k in costs_for_math]
-                print(average)
-                print(np.average(average))
-                print()
-                #print(predictions)
-                #print(labels_in_set)
+
+        print(self.weight_shapes)
+
+
+
+
 
     @staticmethod
     def get_cost(predictions, labels):

@@ -26,3 +26,6 @@ ary1 = [[2, 2], [1, 1]]
 ary2 = [4, 2, 1, 3]
 
 print(np.add(np.concatenate(ary1), ary2))
+
+for batchNumber in range(0, int(np.ceil(len(predictions) / 1))):
+    print(batchNumber)
