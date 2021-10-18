@@ -41,12 +41,12 @@ class NeuralNetwork:
             print(np.shape(predictions))
             costs_for_math = self.get_cost(predictions, labels_in_set)
             average = [np.average(k) for k in costs_for_math]
-            #self.back_prop(np.average, 0)
+            self.back_prop(np.average, 0)
 
 
 
 
-   # def back_prop(self, cost, shape_index):
+    def back_prop(self, cost, shape_index):
         #for()
 
 
