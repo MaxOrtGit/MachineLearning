@@ -47,7 +47,7 @@ class NeuralNetwork:
 
 
     def back_prop(self, cost, shape_index):
-        #for()
+        for()
 
 
 
