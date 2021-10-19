@@ -47,8 +47,14 @@ class NeuralNetwork:
 
 
 
-    #def back_prop(self, cost, shape_index):
-        #for()
+    def back_prop(self, cost, shape_index):
+        print(self.weight_shapes)
+        print(np.shape(self.weights))
+        print(np.shape(self.biases))
+        
+        for weight_pair in self.weight_shapes:
+            print()
+            
 
 
 
