@@ -3,13 +3,18 @@ import numpy as np
 
 class NeuralNetwork:
 
-    def __init__(self, layer_sizes):
-        self.weight_shapes = [(a, b) for a, b in zip(layer_sizes[1:], layer_sizes[:-1])]
-        self.weights = [np.random.standard_normal(s) / s[1] ** .5 for s in self.weight_shapes]
-
-        self.biases = [np.zeros((s, 1)) for s in layer_sizes[1:]]
-        print(self.weight_shapes)
+    def __init__(self, sizes):
+        self.num_layers = len(sizes)
+        self.sizes = sizes
+        self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+        self.weights = [np.random.randn(y, x)
+                        for x, y in zip(sizes[:-1], sizes[1:])]
+    
+        
         print(self.weights)
+        print(self.biases)
+        print(np.shape(self.weights))
+        print(np.shape(self.biases))
 
     def predict(self, a):
         for w, b in zip(self.weights, self.biases):
@@ -41,19 +46,27 @@ class NeuralNetwork:
             print(np.shape(predictions))
             costs_for_math = self.get_cost(predictions, labels_in_set)
             average = [np.average(k) for k in costs_for_math]
-            self.back_prop(np.average, 0)
+            self.back_prop(np.average)
             
 
 
 
 
-    def back_prop(self, cost, shape_index):
-        print(self.weight_shapes)
-        print(np.shape(self.weights))
-        print(np.shape(self.biases))
+    def back_prop(self, cost):
+        #print(self.weight_shapes)
+        #print(self.weights[0])
+        #print(np.shape(self.weights[0]))
+        #print(self.biases[0])
+        #print(np.shape(self.biases[0]))
         
-        for weight_pair in self.weight_shapes:
-            print()
+        for row_on in range(len(self.sizes)-2, -1, -1):
+            for cell_on in self.sizes[row_on]:
+                zeighted_zeight = self.biases[row_on][cell_on]
+                for weight_val in self.weights[row_on][cell_on]:
+                    zeighted_zeight += weight_val   
+                weight_cost = self.activation_derivative(zeighted_zeight)
+                #I DOnt know, ill figure it out later
+            
             
 
 
@@ -70,3 +83,7 @@ class NeuralNetwork:
     @staticmethod
     def activation(x):
         return 1 / (1 + np.exp(-x))
+
+    @staticmethod
+    def activation_derivative(x):
+        return (1 / (1 + np.exp(-x)))*(1-(1 / (1 + np.exp(-x))))
