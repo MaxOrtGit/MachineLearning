@@ -2,6 +2,7 @@ import numpy as np
 import NeuralNetworkOld as nno
 y = []
 
+
 #39-10
 for x in range(39, 9, -1):
     y.append(x)
