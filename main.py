@@ -16,7 +16,7 @@ training_labels = all_labels[:int(len(all_labels) / 2)]
 testing_images = all_images[int(len(all_images) / 2):]
 testing_labels = all_labels[int(len(all_images) / 2):]
 
-layer_sizes = (784, 16, 16, 10)
+layer_sizes = [784, 16, 16, 10]
 
 net = nno.NeuralNetwork(layer_sizes)
 net.print_accuracy(training_images, testing_labels)

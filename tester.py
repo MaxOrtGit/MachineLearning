@@ -1,6 +1,8 @@
 import numpy as np
 import NeuralNetworkOld as nno
 y = []
+
+#39-10
 for x in range(39, 9, -1):
     y.append(x)
 
@@ -57,3 +59,7 @@ print(len(range(4,10)))
 
 for x in range(4,10):
     print(x)
+    
+
+sum = [np.sum(sum, weight_val) for weight_val in y]
+print(sum)
